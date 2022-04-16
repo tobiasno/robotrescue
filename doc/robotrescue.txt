@@ -1,0 +1,44 @@
+Robot Rescue
+============
+Tobias Nolte <tobias.nolte@stud.hshl.de>
+
+== Introduction
+The task was to implement a robot that is spawned on a field of 25x25 positions
+with 15% of that positions beeing obstacles. The robot is supposed to reach the
+position of the target in as few turns as possible without touching the obstacles.
+
+== Algorithm
+As the main algorithm of solving this problem a Breadth-first search is used.
+
+Compare: "Algorithmen - Eine Einführung" 2., korrigierte Auflage;
+Author: Prof. Dr. Thomas H. Cormen, et al.; Page 535 ff.
+
+== Extreme states and statistics
+It is possible for the robot to be completely walled off from the target. In
+this case the robot will never reach the wanted location. Remembering this
+the robot has an almost 100% chance of finding the target.
+
+A set of 25 tests produced an average of 19.35 steps for the robot to finish
+it's task. However, because the start, the target and all obstacles are generated
+randomly, the variance in tests is significant.
+
+== Classes
+
+=== Map
+Map manages the configuration of the playingfield. It knows which fields are of
+what type and can be questioned about them.
+
+=== Robot
+The Robot scans the playingfield according to his field of vision and tries to
+find the randomly spawned target. It uses a graph to calculate positions more
+optimal than its current position and a path to reach them.
+
+=== Graph
+The graph provides the robot with neccesary operations to find the target.
+
+=== Position
+The data type position represents the location of every item on the field
+and makes shure that no impossible states are reached.
+
+=== GraphicalMap
+GraphicalMap draws a graphical representation of the playingfield.
